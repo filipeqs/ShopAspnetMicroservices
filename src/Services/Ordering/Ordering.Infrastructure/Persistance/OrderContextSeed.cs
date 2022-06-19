@@ -13,7 +13,7 @@ namespace Ordering.Infrastructure.Persistance
                 orderContext.Orders.AddRange(orders);
                 await orderContext.SaveChangesAsync();
 
-                logger.LogInformation($"Seed database associated with context {typeof(OrderContext).Name}")
+                logger.LogInformation($"Seed database associated with context {typeof(OrderContext).Name}");
             }
         }
 

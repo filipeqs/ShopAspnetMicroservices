@@ -6,12 +6,12 @@ namespace Ordering.Application.Contracts.Persistance
     public interface IAsyncRepository<T> where T : EntityBase
     {
         Task<IReadOnlyList<T>> GetAllAsync();
-        Task<IReadOnlyList<T>> GetAsync(Expression<Predicate<T>> predicate);
-        Task<IReadOnlyList<T>> GetAsync(Expression<Predicate<T>>? predicate = null,
+        Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate);
+        Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>>? predicate = null,
                                         Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
                                         string? includeString = null,
                                         bool disbleTracking = true);
-        Task<IReadOnlyList<T>> GetAsync(Expression<Predicate<T>>? predicate = null,
+        Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>>? predicate = null,
                                 Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
                                 List<Expression<Func<T, object>>>? includes = null,
                                 bool disbleTracking = true);
